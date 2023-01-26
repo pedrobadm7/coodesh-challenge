@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
-    // fontFamily: 'AzoSans-Regular',
   },
 });
 

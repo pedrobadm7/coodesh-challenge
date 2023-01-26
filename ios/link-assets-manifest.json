@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/AzoSans-Black.otf",
+      "sha1": "c6e9b43ac26dbf8e909709199e0587b56f27cd2c"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-BlackItalic.otf",
+      "sha1": "a446d342085f0256a9fdf42a2394c45cc452d834"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-Bold.otf",
+      "sha1": "252545e8d1e0d123399edf237dd04a5b3df7411a"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-BoldItalic.otf",
+      "sha1": "16c9ced71af12ebb12af2f4ae5d5349f4006e0a8"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-Italic.otf",
+      "sha1": "b9220f059b7a0db56b326299e8a35899c855e90e"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-Light.otf",
+      "sha1": "67613d8691a3f5b29777cfb3bb89b2c93970b2c0"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-LightItalic.otf",
+      "sha1": "6b9c61fe4712f778a2a60f933abe1ceb0c487ec5"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-Medium.otf",
+      "sha1": "f2e91689ea38536a7583bd9b7808615c9efe3ff5"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-MediumItalic.otf",
+      "sha1": "2ffc7b8805ad67da46b9337ec4309293358486a8"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-Regular.otf",
+      "sha1": "fd704db4ee8a64b64ea05e6df105d69c85c224a3"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-Thin.otf",
+      "sha1": "467c5c7d779d4e4e226d98821e8b50cc861cd8b0"
+    },
+    {
+      "path": "src/assets/fonts/AzoSans-ThinItalic.otf",
+      "sha1": "4fc72c00841e5dc8b6fa85e8ba77687f7c819ed4"
+    }
+  ]
+}
