@@ -1,10 +1,10 @@
-import { Text, View } from 'react-native';
+import { AppNavigation } from './src/core/navigation/AppRouting';
 
 function App() {
   return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
+    <>
+      <AppNavigation />
+    </>
   );
 }
 
