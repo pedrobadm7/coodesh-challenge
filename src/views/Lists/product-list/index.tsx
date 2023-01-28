@@ -5,6 +5,8 @@ import { Product } from '../../../models/Product';
 import { Header } from '../../../components/header';
 import { StarRating } from '../../../components/star-rating';
 import { ListProductModal } from '../../../components/modal';
+import { Platform, View } from 'react-native';
+import { useState } from 'react';
 
 
 const product = {
@@ -21,13 +23,24 @@ const product = {
 const image0 = require('../../../assets/images/0.jpg');
 
 export function ProductList() {
+  const [visible, setVisible] = useState(false);
+
+  function handleOpenProductModal() {
+    setVisible(true);
+  }
+
+  function handleCloseModal() {
+    setVisible(false);
+  }
+
   return (
     <>
       <S.Container>
-
         <Header title='Products List' />
 
-        <S.CardContainer>
+        <S.CardContainer
+          onPress={handleOpenProductModal}
+          activeOpacity={Platform.OS === 'android' ? 1 : 0.1}>
           <Card style={{backgroundColor: COLOR.PRIMARY_100}}>
             <S.CardTitleContainer>
               <Card.Title
@@ -63,7 +76,11 @@ export function ProductList() {
           </Card>
         </S.CardContainer>
       </S.Container>
-      <ListProductModal  product={product}/>
+      <ListProductModal
+        visible={visible}
+        product={product}
+        onClose={handleCloseModal}
+      />
     </>
   );
 }

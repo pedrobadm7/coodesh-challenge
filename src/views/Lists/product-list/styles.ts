@@ -12,7 +12,7 @@ import {
 const isAndroid = Platform.OS === 'android';
 
 export const Container = styled.SafeAreaView`
-  flex: 1;
+  height: 100%;
   margin-top: ${isAndroid ? `${StatusBar.currentHeight}px` : '0'};
   background-color: ${COLOR.BACKGROUND_COLOR};
 `;
@@ -23,7 +23,7 @@ export const CardTitleContainer = styled.View`
   justify-content: space-between;
 `;
 
-export const CardContainer = styled.View`
+export const CardContainer = styled.TouchableOpacity`
   margin: ${SPACING.S1}px;
   border-radius: ${DEFAULT_BORDER_RADIUS}px;
   background-color: green;

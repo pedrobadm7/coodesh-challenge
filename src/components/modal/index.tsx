@@ -1,10 +1,14 @@
+import { Alert, Platform, View } from 'react-native';
 import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Product } from '../../models/Product';
 import { COLOR } from '../../styles/themes';
 import * as S from './styles';
 
 interface ModalProps {
   product: Product
+  visible: boolean
+  onClose: () => void
 }
 
 const containerStyle = {
@@ -12,60 +16,83 @@ const containerStyle = {
   marginLeft: 15,
   marginRight: 15,
   borderRadius: 8,
+
 };
 
 const image0 = require('../../assets/images/0.jpg');
 
-export function ListProductModal({product}: ModalProps) {
+export function ListProductModal({product, visible, onClose}: ModalProps) {
+
+  function handleDelete() {
+    Alert.alert('DELETAR', 'Tem certeza de que deseja deletar este produto?', [
+      {
+        text: 'Cancelar',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'Deletar',
+        onPress: () => console.log('Deletar Pressed'),
+        style: Platform.OS === 'ios'
+          ? 'destructive'
+          : undefined
+      }
+    ]);
+  }
+
+  function handleEdit() {
+    console.log('Navegar para a pagina de edição');
+  }
+
   return (
     <Provider>
       <Portal>
         <Modal
-          visible={true}
+          visible={visible}
           contentContainerStyle={containerStyle}
+          onDismiss={onClose}
         >
+          <Icon
+            name='close-box'
+            size={30}
+            color={COLOR.WHITE}
+            style={{position: 'absolute', top: 0, right: 0, zIndex: 1, padding: 10}}
+            onPress={onClose}
+          />
           <S.ProductImage
             source={image0}
             resizeMode='stretch'
           />
-          <S.ModalContainer
-          >
-            <S.TitleContainer>
-              <S.Title>
-                {product.title}
-              </S.Title>
-              <S.Description>
-                {product.description}
-              </S.Description>
 
-            </S.TitleContainer>
+          <View  style={{flex: 1}}/>
 
-            <S.ButtonContainer>
-              <Button
-                style={{
-                  marginTop: 30,
-                  marginVertical: 15
-                }}
-                color={COLOR.PURPLE_500}
-                icon='square-edit-outline'
-                mode='contained'
-              >
+          <S.ButtonContainer>
+            <Button
+              style={{
+                marginTop: 30,
+                marginVertical: 15
+              }}
+              color={COLOR.PURPLE_500}
+              icon='square-edit-outline'
+              mode='contained'
+              onPress={handleEdit}
+            >
              Editar
-              </Button>
+            </Button>
 
-              <Button
-                style={{
-                  marginTop: 30,
-                  marginVertical: 15
-                }}
-                color={COLOR.DANGER_500}
-                icon='trash-can-outline'
-                mode='contained'
-              >
+            <Button
+              style={{
+                marginTop: 30,
+                marginVertical: 15
+              }}
+              color={COLOR.DANGER_500}
+              icon='trash-can-outline'
+              mode='contained'
+              onPress={handleDelete}
+            >
              Deletar
-              </Button>
-            </S.ButtonContainer>
-          </S.ModalContainer>
+            </Button>
+          </S.ButtonContainer>
 
         </Modal>
       </Portal>
