@@ -4,9 +4,10 @@ import * as S from './styles';
 import { Product } from '../../../models/Product';
 import { Header } from '../../../components/header';
 import { StarRating } from '../../../components/star-rating';
-import { ListProductModal } from '../../../components/modal';
+
 import { Platform, View } from 'react-native';
 import { useState } from 'react';
+import { ListProductModal } from '../../../components/list-product-modal';
 
 
 const product = {
@@ -22,7 +23,7 @@ const product = {
 
 const image0 = require('../../../assets/images/0.jpg');
 
-export function ProductList() {
+export function ProductList({navigation}: any) {
   const [visible, setVisible] = useState(false);
 
   function handleOpenProductModal() {
@@ -81,6 +82,7 @@ export function ProductList() {
       <ListProductModal
         visible={visible}
         product={product}
+        navigation={navigation}
         onClose={handleCloseModal}
       />
     </>

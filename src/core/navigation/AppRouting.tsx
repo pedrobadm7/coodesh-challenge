@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View } from 'react-native';
 import { CreateAccountScreen } from '../../views/Auth/create-account-screen/CreateAccountScreen';
 import { LoginScreen } from '../../views/Auth/login-screen';
+import { EditProduct } from '../../views/Lists/edit-product';
 import { ProductList } from '../../views/Lists/product-list';
 import { AUTH_SCREENS, FLOWS, PRODUCT_SCREENS } from './constants';
 
@@ -44,6 +45,10 @@ function ListProductStackFlow() {
       <ListProductStack.Screen
         name={PRODUCT_SCREENS.PRODUCT_LIST}
         component={ProductList}
+      />
+      <ListProductStack.Screen
+        name={PRODUCT_SCREENS.EDIT_PRODUCT}
+        component={EditProduct}
       />
     </ListProductStack.Navigator>
   );

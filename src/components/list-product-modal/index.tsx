@@ -1,12 +1,14 @@
 import { Alert, Platform, View } from 'react-native';
 import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { PRODUCT_SCREENS } from '../../core/navigation/constants';
 import { Product } from '../../models/Product';
 import { COLOR, SPACING } from '../../styles/themes';
 import * as S from './styles';
 
 interface ModalProps {
   product: Product
+  navigation: any
   visible: boolean
   onClose: () => void
 }
@@ -21,7 +23,7 @@ const containerStyle = {
 
 const image0 = require('../../assets/images/0.jpg');
 
-export function ListProductModal({product, visible, onClose}: ModalProps) {
+export function ListProductModal({product, navigation, visible, onClose}: ModalProps) {
 
   function handleDelete() {
     Alert.alert('DELETAR', 'Tem certeza de que deseja deletar este produto?', [
@@ -41,7 +43,7 @@ export function ListProductModal({product, visible, onClose}: ModalProps) {
   }
 
   function handleEdit() {
-    console.log('Navegar para a pagina de edição');
+    navigation.navigate(PRODUCT_SCREENS.EDIT_PRODUCT);
   }
 
   return (
