@@ -41,6 +41,7 @@ export function ProductList() {
         <S.CardContainer
           onPress={handleOpenProductModal}
           activeOpacity={Platform.OS === 'android' ? 1 : 0.1}>
+
           <Card style={{backgroundColor: COLOR.PRIMARY_100}}>
             <S.CardTitleContainer>
               <Card.Title
@@ -72,10 +73,11 @@ export function ProductList() {
 
               </S.CardDetails>
             </Card.Content>
-
           </Card>
+
         </S.CardContainer>
       </S.Container>
+
       <ListProductModal
         visible={visible}
         product={product}
