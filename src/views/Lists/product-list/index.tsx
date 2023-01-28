@@ -3,6 +3,7 @@ import {  Card, Text } from 'react-native-paper';
 import { COLOR,  DEFAULT_BORDER_RADIUS, FONT_FAMILY_BOLD, SPACING } from '../../../styles/themes';
 import * as S from './styles';
 import { Product } from '../../../models/Product';
+import { Header } from '../../../components/Header';
 
 const product = {
   title: 'Brown eggs',
@@ -20,11 +21,7 @@ const image0 = require('../../../assets/images/0.jpg');
 export function ProductList() {
   return (
     <S.Container>
-      <S.Header>
-        <S.HeaderTitle>
-        Products List
-        </S.HeaderTitle>
-      </S.Header>
+      <Header title='Products List' />
 
       <S.CardContainer>
         <Card style={{backgroundColor: COLOR.PRIMARY_100}}>
