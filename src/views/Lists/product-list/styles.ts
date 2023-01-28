@@ -1,7 +1,13 @@
 import {Platform, StatusBar} from 'react-native';
 import {Image} from 'react-native';
+import {Text} from 'react-native-paper';
 import styled from 'styled-components/native';
-import {COLOR, DEFAULT_BORDER_RADIUS, SPACING} from '../../../styles/themes';
+import {
+  COLOR,
+  DEFAULT_BORDER_RADIUS,
+  FONT_FAMILY_BOLD,
+  SPACING,
+} from '../../../styles/themes';
 
 const isAndroid = Platform.OS === 'android';
 
@@ -20,6 +26,7 @@ export const CardTitleContainer = styled.View`
 export const CardContainer = styled.View`
   margin: ${SPACING.S1}px;
   border-radius: ${DEFAULT_BORDER_RADIUS}px;
+  background-color: green;
 `;
 
 export const ProductImage = styled(Image)`
@@ -30,14 +37,21 @@ export const ProductImage = styled(Image)`
 
 export const CardDetails = styled.View`
   flex: 1;
-  padding: ${SPACING.S0_75}px;
+  padding-left: ${SPACING.S0_75}px;
   margin: 0 ${SPACING.S0_25}px;
   justify-content: space-between;
-
   border-radius: ${DEFAULT_BORDER_RADIUS}px;
 `;
 
 export const RatingAndPriceContainer = styled.View`
   flex-direction: row;
+  gap: 15px;
   justify-content: space-between;
+`;
+
+export const Price = styled(Text)`
+  color: ${COLOR.PURPLE_500};
+  font-family: ${FONT_FAMILY_BOLD};
+  padding-left: ${SPACING.S0_125}px;
+  font-weight: 600;
 `;

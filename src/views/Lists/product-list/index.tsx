@@ -3,7 +3,8 @@ import {  Card, Text } from 'react-native-paper';
 import { COLOR,  DEFAULT_BORDER_RADIUS, FONT_FAMILY_BOLD, SPACING } from '../../../styles/themes';
 import * as S from './styles';
 import { Product } from '../../../models/Product';
-import { Header } from '../../../components/Header';
+import { Header } from '../../../components/header';
+import { StarRating } from '../../../components/star-rating';
 
 const product = {
   title: 'Brown eggs',
@@ -47,9 +48,12 @@ export function ProductList() {
               <Text style={{color: COLOR.GRAY_800}}>{product.description}</Text>
 
               <S.RatingAndPriceContainer>
-                <Text>{product.rating} estrelas</Text>
-                <Text style={{color: COLOR.PURPLE_500, fontFamily: FONT_FAMILY_BOLD}}>R$ {product.price}</Text>
+                <Text>
+                  <StarRating />
+                </Text>
+                <S.Price>R$ {product.price}</S.Price>
               </S.RatingAndPriceContainer>
+
             </S.CardDetails>
           </Card.Content>
 
