@@ -53,8 +53,8 @@ export function ProductList() {
             <Card.Content style={{
               flexDirection: 'row',
               backgroundColor: COLOR.PRIMARY_200,
-              margin: 10,
-              paddingTop: 15,
+              margin: SPACING.S0_75,
+              paddingTop: SPACING.S1_15,
               borderRadius: DEFAULT_BORDER_RADIUS
             }}>
               <S.ProductImage

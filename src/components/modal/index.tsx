@@ -2,7 +2,7 @@ import { Alert, Platform, View } from 'react-native';
 import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Product } from '../../models/Product';
-import { COLOR } from '../../styles/themes';
+import { COLOR, SPACING } from '../../styles/themes';
 import * as S from './styles';
 
 interface ModalProps {
@@ -56,7 +56,7 @@ export function ListProductModal({product, visible, onClose}: ModalProps) {
             name='close-box'
             size={30}
             color={COLOR.WHITE}
-            style={{position: 'absolute', top: 0, right: 0, zIndex: 1, padding: 10}}
+            style={{position: 'absolute', top: 0, right: 0, zIndex: 1, padding: SPACING.S0_75}}
             onPress={onClose}
           />
           <S.ProductImage
