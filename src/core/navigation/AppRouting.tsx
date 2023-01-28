@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { CreateAccountScreen } from '../../views/Auth/create-account-screen/CreateAccountScreen';
 import { LoginScreen } from '../../views/Auth/login-screen';
 import { ProductList } from '../../views/Lists/product-list';
@@ -49,20 +49,31 @@ function ListProductStackFlow() {
   );
 }
 
+const verdade = true;
+
 function RootStackFlow() {
   return (
     <RootStack.Navigator>
-      <RootStack.Screen
-        name={FLOWS.AUTH_FLOW}
-        component={AuthStackFlow}
-        options={{
-          headerShown: false
-        }}
-      />
-      <RootStack.Screen
-        name={FLOWS.PRODUCT_FLOW}
-        component={ListProductStackFlow}
-      />
+      {!verdade ? (
+        <RootStack.Screen
+          name={FLOWS.AUTH_FLOW}
+          component={AuthStackFlow}
+          options={{
+            headerShown: false
+          }}
+        />
+      ) : (
+        <RootStack.Screen
+          name={FLOWS.PRODUCT_FLOW}
+          component={ListProductStackFlow}
+          options={{
+            headerShown: false
+          }}
+        />
+
+      )}
+
+
     </RootStack.Navigator>
   );
 }
