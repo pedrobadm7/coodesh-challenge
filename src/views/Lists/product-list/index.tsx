@@ -20,6 +20,7 @@ export function ProductList({navigation}: {navigation: any}) {
   const [startAfter, setStartAfter] = useState<any>(null);
 
   function fetchData() {
+
     database
       .collection('Products')
       .orderBy('created_at', 'asc')
@@ -107,7 +108,10 @@ export function ProductList({navigation}: {navigation: any}) {
                 </>
               );
             }}
-            onEndReached={fetchData}
+            onEndReached={() => {
+              if (!startAfter) return;
+              fetchData();
+            }}
             onEndReachedThreshold={0.1}
           />
         </S.CardContainer>
