@@ -1,13 +1,13 @@
 import { Alert, Platform, View } from 'react-native';
-import { Modal, Portal,  Button, Provider } from 'react-native-paper';
+import { Modal, Portal,  Button, Provider, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { PRODUCT_SCREENS } from '../../core/navigation/constants';
 import { Product } from '../../models/Product';
-import { COLOR, SPACING } from '../../styles/themes';
+import { COLOR, FONT_FAMILY_REGULAR, SPACING } from '../../styles/themes';
 import * as S from './styles';
 
 interface ModalProps {
-  product: Product | null
+  product: Product
   navigation: any
   visible: boolean
   onClose: () => void
@@ -51,6 +51,7 @@ export function ListProductModal({product, navigation, visible, onClose}: ModalP
           visible={visible}
           contentContainerStyle={containerStyle}
           onDismiss={onClose}
+          style={{justifyContent: 'center'}}
         >
           <Icon
             name='close-box'
@@ -64,7 +65,21 @@ export function ListProductModal({product, navigation, visible, onClose}: ModalP
             resizeMode='stretch'
           />
 
-          <View  style={{flex: 1}}/>
+          <S.ProductDetailContainer>
+            <S.ProductDetail>
+              <Text>{product.title}</Text>
+            </S.ProductDetail>
+            <S.ProductDetail>
+              <Text>Largura: {product.width}cm</Text>
+            </S.ProductDetail>
+            <S.ProductDetail>
+              <Text>Altura: {product.height}cm</Text>
+            </S.ProductDetail>
+
+          </S.ProductDetailContainer>
+
+
+          <View style={{flex: 1, padding: 10, justifyContent: 'center'}} />
 
           <S.ButtonContainer>
             <Button

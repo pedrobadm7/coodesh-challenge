@@ -11,12 +11,12 @@ import { database } from '../../../config/firebaseconfig';
 import { formatCurrency } from '../../../utils/general';
 import { ListProductModal } from '../../../components/list-product-modal';
 
-const PAGE_LIMIT = 4;
+const PAGE_LIMIT = 20;
 
 export function ProductList({navigation}: {navigation: any}) {
   const [visible, setVisible] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<Product>({} as Product);
   const [startAfter, setStartAfter] = useState<any>(null);
 
   function fetchData() {
@@ -49,6 +49,11 @@ export function ProductList({navigation}: {navigation: any}) {
 
   function handleCloseModal() {
     setVisible(false);
+  }
+
+  function handleEndReached() {
+    if (!startAfter) return;
+    fetchData();
   }
 
   return (
@@ -108,10 +113,7 @@ export function ProductList({navigation}: {navigation: any}) {
                 </>
               );
             }}
-            onEndReached={() => {
-              if (!startAfter) return;
-              fetchData();
-            }}
+            onEndReached={handleEndReached}
             onEndReachedThreshold={0.1}
           />
         </S.CardContainer>
