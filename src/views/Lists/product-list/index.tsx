@@ -44,7 +44,7 @@ export function ProductList({navigation}: {navigation: any}) {
             data={products}
             keyExtractor={product => product.id}
             renderItem={({item: product, index}: {item: Product, index: number}) => {
-              console.log(product.created_at);
+
               const date = new Date(product.created_at.toDate());
               const formattedDate = date.toLocaleDateString('pt-BR', {
                 day: '2-digit',
