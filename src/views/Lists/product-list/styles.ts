@@ -23,10 +23,9 @@ export const CardTitleContainer = styled.View`
   justify-content: space-between;
 `;
 
-export const CardContainer = styled.TouchableOpacity`
+export const CardContainer = styled.View`
   margin: ${SPACING.S1}px;
   border-radius: ${DEFAULT_BORDER_RADIUS}px;
-  background-color: green;
 `;
 
 export const ProductImage = styled(Image)`
@@ -35,7 +34,7 @@ export const ProductImage = styled(Image)`
   border-radius: ${DEFAULT_BORDER_RADIUS}px;
 `;
 
-export const CardDetails = styled.View`
+export const CardDetails = styled.TouchableOpacity`
   flex: 1;
   padding-left: ${SPACING.S0_75}px;
   margin: 0 ${SPACING.S0_25}px;

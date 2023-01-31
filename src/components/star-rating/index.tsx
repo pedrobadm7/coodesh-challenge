@@ -3,8 +3,8 @@ import { TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { COLOR, SPACING } from '../../styles/themes';
 
-export function StarRating() {
-  const [starSelected, setStarSelected] = useState(0);
+export function StarRating({rating}: {rating: number}) {
+  const [starSelected, setStarSelected] = useState(rating ?? 0);
 
   function handleStarPress(index: number) {
     if (index + 1 === starSelected) {

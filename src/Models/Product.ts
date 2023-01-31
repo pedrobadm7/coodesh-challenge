@@ -1,4 +1,7 @@
+import firebase from 'firebase';
+
 export interface Product {
+  id: string;
   title: string;
   type: string;
   description: string;
@@ -7,4 +10,5 @@ export interface Product {
   width: number;
   price: number;
   rating: number;
+  created_at: firebase.firestore.Timestamp;
 }

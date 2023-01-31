@@ -7,7 +7,7 @@ import { COLOR, SPACING } from '../../styles/themes';
 import * as S from './styles';
 
 interface ModalProps {
-  product: Product
+  product: Product | null
   navigation: any
   visible: boolean
   onClose: () => void
