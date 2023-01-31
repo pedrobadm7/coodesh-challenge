@@ -8,6 +8,7 @@ import { StarRating } from '../../../components/star-rating';
 import { FlatList, Platform } from 'react-native';
 import { useEffect, useState } from 'react';
 import { database } from '../../../config/firebaseconfig';
+import { formatCurrency } from '../../../utils/general';
 
 export function ProductList({navigation}: {navigation: any}) {
   const [visible, setVisible] = useState(false);
@@ -80,7 +81,7 @@ export function ProductList({navigation}: {navigation: any}) {
                           <Text>
                             <StarRating rating={product.rating}/>
                           </Text>
-                          <S.Price>R$ {product.price}</S.Price>
+                          <S.Price>{formatCurrency(product.price)}</S.Price>
                         </S.RatingAndPriceContainer>
 
                       </S.CardDetails>
