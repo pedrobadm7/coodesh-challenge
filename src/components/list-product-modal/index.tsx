@@ -1,5 +1,5 @@
 import { Alert, Platform, View } from 'react-native';
-import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
+import { Modal, Portal,  Button, Provider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { PRODUCT_SCREENS } from '../../core/navigation/constants';
 import { Product } from '../../models/Product';
@@ -20,8 +20,6 @@ const containerStyle = {
   borderRadius: 8,
 
 };
-
-const image0 = require('../../assets/images/0.jpg');
 
 export function ListProductModal({product, navigation, visible, onClose}: ModalProps) {
 
@@ -62,7 +60,7 @@ export function ListProductModal({product, navigation, visible, onClose}: ModalP
             onPress={onClose}
           />
           <S.ProductImage
-            source={image0}
+            source={{uri: product?.filename}}
             resizeMode='stretch'
           />
 

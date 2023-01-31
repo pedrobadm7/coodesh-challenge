@@ -9,24 +9,41 @@ import { FlatList, Platform } from 'react-native';
 import { useEffect, useState } from 'react';
 import { database } from '../../../config/firebaseconfig';
 import { formatCurrency } from '../../../utils/general';
+import { ListProductModal } from '../../../components/list-product-modal';
+
+const PAGE_LIMIT = 4;
 
 export function ProductList({navigation}: {navigation: any}) {
   const [visible, setVisible] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [startAfter, setStartAfter] = useState<any>(null);
+
+  function fetchData() {
+    database
+      .collection('Products')
+      .orderBy('created_at', 'asc')
+      .startAfter(startAfter)
+      .limit(PAGE_LIMIT)
+      .onSnapshot((query) => {
+        const list: Product[] = [];
+        query.forEach((doc) => {
+          list.push({id: doc.id, ...doc.data()} as Product);
+
+        });
+        setProducts([...products, ...list]);
+        setStartAfter(query.docs[query.docs.length - 1]);
+      });
+  }
 
   useEffect(() => {
-    database.collection('Products').onSnapshot((query) => {
-      const list: Product[] = [];
-      query.forEach((doc) => {
-        list.push({id: doc.id, ...doc.data()} as Product);
-
-      });
-      setProducts(list);
-    });
+    fetchData();
   }, []);
 
-  function handleOpenProductModal() {
+
+  function handleOpenProductModal(product: Product) {
     setVisible(true);
+    setProduct(product);
   }
 
   function handleCloseModal() {
@@ -74,7 +91,7 @@ export function ProductList({navigation}: {navigation: any}) {
                       <S.ProductImage
                         source={{uri: product.filename}}
                       />
-                      <S.CardDetails onPress={handleOpenProductModal} activeOpacity={Platform.OS === 'android' ? 1 : 0.1}>
+                      <S.CardDetails onPress={() => handleOpenProductModal(product)} activeOpacity={Platform.OS === 'android' ? 1 : 0.1}>
                         <Text style={{color: COLOR.GRAY_800}}>{product.description}</Text>
 
                         <S.RatingAndPriceContainer>
@@ -90,16 +107,18 @@ export function ProductList({navigation}: {navigation: any}) {
                 </>
               );
             }}
+            onEndReached={fetchData}
+            onEndReachedThreshold={0.1}
           />
         </S.CardContainer>
       </S.Container>
 
-      {/* <ListProductModal
+      <ListProductModal
         visible={visible}
         product={product}
         navigation={navigation}
         onClose={handleCloseModal}
-      /> */}
+      />
     </>
   );
 }
