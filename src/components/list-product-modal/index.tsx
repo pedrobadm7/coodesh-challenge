@@ -3,7 +3,7 @@ import { Modal, Portal,  Button, Provider, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { PRODUCT_SCREENS } from '../../core/navigation/constants';
 import { Product } from '../../models/Product';
-import { COLOR, FONT_FAMILY_REGULAR, SPACING } from '../../styles/themes';
+import { COLOR, SPACING } from '../../styles/themes';
 import * as S from './styles';
 
 interface ModalProps {
@@ -41,7 +41,9 @@ export function ListProductModal({product, navigation, visible, onClose}: ModalP
   }
 
   function handleEdit() {
-    navigation.navigate(PRODUCT_SCREENS.EDIT_PRODUCT);
+    navigation.navigate(PRODUCT_SCREENS.EDIT_PRODUCT, {
+      product: product as Product
+    });
   }
 
   return (
